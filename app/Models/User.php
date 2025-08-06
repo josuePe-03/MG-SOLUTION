@@ -48,6 +48,11 @@ class User extends Authenticatable
 
     public function perfiles()
     {
-        return $this->belongsToMany(Perfil::class);
+        return $this->belongsToMany(Perfil::class, 'perfil_user', 'user_id', 'perfil_id');
+    }
+
+    public function tienePerfil($nombrePerfil)
+    {
+        return $this->perfiles()->where('nombre', $nombrePerfil)->exists();
     }
 }

@@ -14,7 +14,7 @@ class AdminUserSeeder extends Seeder
             ['email' => 'admin@labquimic.com'],
             [
                 'name' => 'Administrador',
-                'password' => Hash::make('admin123'), // ⚠️ cámbialo en producción
+                'password' => Hash::make('admin123'), 
             ]
         );
     }
