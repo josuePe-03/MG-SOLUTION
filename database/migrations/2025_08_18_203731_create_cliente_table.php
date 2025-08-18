@@ -9,11 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('unidades', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
+            $table->string('nombre', 100)->unique(); 
+            $table->integer('edad');                
+            $table->enum('sexo', ['MASCULINO', 'FEMENINO']);       
+            $table->boolean('activo')->default(true); 
             $table->timestamps();
         });
     }
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidades');
+        Schema::dropIfExists('cliente');
     }
 };

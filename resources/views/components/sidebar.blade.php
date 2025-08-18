@@ -5,8 +5,8 @@
         <nav class="space-y-2 text-sm">
             @auth
                 @if (auth()->user()->tienePerfil('Administrador'))
-                    <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Clientes</a>
-                    <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Doctores</a>
+                    <a href="/clientes" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Clientes</a>
+                    <a href="/doctores" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Doctores</a>
                 @endif
 
                 {{-- Dropdown Analisis --}}
@@ -19,15 +19,16 @@
                     </button>
 
                     <div x-show="analisisOpen" x-transition class="mt-1 space-y-1 pl-4">
-                        @if (auth()->user()->tienePerfil('Capturista'))
+                        @if (auth()->user()->tienePerfil('Capturista') || auth()->user()->tienePerfil('Administrador'))
                             <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Analisis</a>
                         @endif
                         @if (auth()->user()->tienePerfil('Administrador'))
-                            <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Analisis</a>
-                            <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Metodo</a>
-                            <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Muestra</a>
+                            <a href="/hemograma_completo" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Hemograma Completo</a>
+                            <a href="/tipo_analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Analisis</a>
+                            <a href="/tipo_metodo" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Metodo</a>
+                            <a href="/tipo_muestra" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Muestra</a>
                             <a href="/unidades" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Unidades</a>
-                            <a href="/analisis" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Categoria de Hemograma Completo</a>
+                            <a href="/categoria_hemograma_completo" class="block px-3 py-2 rounded hover:bg-[#0EA5E9]">Categoria de Hemograma Completo</a>
                         @endif
                     </div>
                 </div>

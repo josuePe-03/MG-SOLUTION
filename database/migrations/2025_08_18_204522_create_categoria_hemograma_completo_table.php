@@ -9,12 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('unidades', function (Blueprint $table) {
+        Schema::create('categoria_hemograma_completo', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 50);
+            $table->string('nombre', 100)->unique(); 
             $table->timestamps();
+
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unidades');
+        Schema::dropIfExists('categoria_hemograma_completo');
     }
 };
