@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  app-la-piedad:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app-la-piedad
+    ports:
+    - "8080:80"
