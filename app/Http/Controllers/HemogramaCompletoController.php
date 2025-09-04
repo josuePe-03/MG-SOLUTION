@@ -12,7 +12,7 @@ class HemogramaCompletoController extends Controller
 {
     public function index()
     {
-        $hemogramas = HemogramaCompleto::with(['categoria', 'unidad', 'tipoAnalisis'])->get();
+        $hemogramas = HemogramaCompleto::with(['categoria', 'unidad'])->get();
         return view('hemograma_completo.index', compact('hemogramas'));
     }
 
@@ -31,7 +31,6 @@ class HemogramaCompletoController extends Controller
             'nombre' => 'required|string|max:100',
             'idCategoriaHemogramaCompleto' => 'required|exists:categoria_hemograma_completo,id',
             'idUnidad' => 'required|exists:unidades,id',
-            'idTipoAnalisis' => 'required|exists:tipo_analisis,id',
             'referencia' => 'required|string|max:100',
         ]);
 
@@ -55,7 +54,6 @@ class HemogramaCompletoController extends Controller
             'nombre' => 'required|string|max:100',
             'idCategoriaHemogramaCompleto' => 'required|exists:categoria_hemograma_completo,id',
             'idUnidad' => 'required|exists:unidades,id',
-            'idTipoAnalisis' => 'required|exists:tipo_analisis,id',
             'referencia' => 'required|string|max:100',
         ]);
 

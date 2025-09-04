@@ -25,11 +25,6 @@ return new class extends Migration
                 ->constrained('unidades')
                 ->cascadeOnDelete();
 
-            // Relación muchos a uno con TipoAnalisis
-            $table->foreignId('idTipoAnalisis')
-                ->constrained('tipo_analisis')
-                ->cascadeOnDelete();
-
             $table->string('referencia', 100);
             $table->timestamps();
         });

@@ -17,7 +17,6 @@
                     <th class="border px-4 py-2">Nombre</th>
                     <th class="border px-4 py-2">Categoría</th>
                     <th class="border px-4 py-2">Unidad</th>
-                    <th class="border px-4 py-2">Tipo de Análisis</th>
                     <th class="border px-4 py-2">Referencia</th>
                     <th class="border px-4 py-2">Acciones</th>
                 </tr>
@@ -29,7 +28,6 @@
                         <td class="border px-4 py-2">{{ $h->nombre }}</td>
                         <td class="border px-4 py-2">{{ $h->categoria->nombre }}</td>
                         <td class="border px-4 py-2">{{ $h->unidad->nombre }}</td>
-                        <td class="border px-4 py-2">{{ $h->tipoAnalisis->nombre }}</td>
                         <td class="border px-4 py-2">{{ $h->referencia }}</td>
                         <td class="border px-4 py-2">
                             <a href="{{ route('hemograma_completo.edit', $h) }}" class="text-yellow-600 hover:underline mr-2">Editar</a>

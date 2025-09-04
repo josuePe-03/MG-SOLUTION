@@ -14,4 +14,9 @@ class TipoAnalisis extends Model
     protected $fillable = [
         'nombre',
     ];
+
+    public function hemogramas()
+    {
+        return $this->belongsToMany(HemogramaCompleto::class, 'hemograma_completo_tipo_analisis');
+    }
 }

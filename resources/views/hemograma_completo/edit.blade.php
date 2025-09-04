@@ -36,17 +36,7 @@
                 @error('idUnidad')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
             </div>
 
-            <div class="mb-3">
-                <label>Tipo de Análisis</label>
-                <select name="idTipoAnalisis" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring" required>
-                    <option value="">Selecciona un tipo de análisis</option>
-                    @foreach($tiposAnalisis as $t)
-                        <option value="{{ $t->id }}" {{ old('idTipoAnalisis', $hemogramaCompleto->idTipoAnalisis) == $t->id ? 'selected' : '' }}>{{ $t->nombre }}</option>
-                    @endforeach
-                </select>
-                @error('idTipoAnalisis')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
-            </div>
-
+ 
             <div class="mb-3">
                 <label>Referencia</label>
                 <input type="text" name="referencia" value="{{ old('referencia', $hemogramaCompleto->referencia) }}" class="w-full border px-3 py-2 rounded focus:outline-none focus:ring" required>

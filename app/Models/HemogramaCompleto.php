@@ -15,7 +15,6 @@ class HemogramaCompleto extends Model
         'nombre',
         'idCategoriaHemogramaCompleto',
         'idUnidad',
-        'idTipoAnalisis',
         'referencia',
     ];
 
@@ -29,8 +28,8 @@ class HemogramaCompleto extends Model
         return $this->belongsTo(Unidad::class, 'idUnidad');
     }
 
-    public function tipoAnalisis()
+    public function tiposAnalisis()
     {
-        return $this->belongsTo(TipoAnalisis::class, 'idTipoAnalisis');
+        return $this->belongsToMany(TipoAnalisis::class, 'hemograma_completo_tipo_analisis');
     }
 }
