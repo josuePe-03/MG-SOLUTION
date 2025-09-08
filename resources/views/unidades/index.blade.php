@@ -37,6 +37,7 @@
                         <form action="{{ route('unidades.destroy', $unidad) }}" method="POST" class="inline">
                             @csrf @method('DELETE')
                             <button 
+                             type="submit"
                                 onclick="return confirm('¿Eliminar?')" 
                                 class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium hover:bg-red-200 transition">
                                 Eliminar</button>

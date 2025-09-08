@@ -97,45 +97,41 @@
             <!-- Cuadro de categorías y hemogramas (derecha) -->
             <div class="lg:w-[33rem] bg-white shadow-lg rounded-lg p-4 overflow-auto max-h-[600px]">
                 <h3 class="text-lg font-semibold mb-3">Categorías y Hemogramas</h3>
-                
-                @foreach($tiposAnalisis as $tipo)
-                    @php
-                        $hemogramasPorCategoria = $tipo->hemogramas->groupBy(fn($h) => $h->categoria->nombre ?? 'Sin categoría');
-                    @endphp
 
-                    @foreach($hemogramasPorCategoria as $categoria => $hemogramas)
-                        <div class="mb-4 border rounded">
-                            <!-- Nombre de la categoría -->
-                            <div class="bg-gray-100 px-3 py-2 font-semibold cursor-pointer hover:bg-gray-200">
-                                {{ $categoria }}
-                            </div>
+                @php
+                    $hemogramasPorCategoria = $analisi->tipoAnalisis
+                        ->hemogramas
+                        ->groupBy(fn($h) => $h->categoria->nombre ?? 'Sin categoría');
+                @endphp
 
-                            <!-- Tipo de análisis -->
-                            <div class="bg-gray-50 px-3 py-2 font-medium text-gray-700">
-                                {{ $tipo->nombre }}
-                            </div>
-
-                            <!-- Hemogramas con input de resultado -->
-                            <div class="p-3 space-y-2">
-                                @foreach($hemogramas as $hemograma)
-                                    @php
-                                        $valorPrevio = $analisi->hemogramas->firstWhere('id', $hemograma->id)?->pivot->resultado;
-                                    @endphp
-
-                                    <div class="flex flex-col md:flex-row md:items-center md:justify-between border p-2 rounded bg-white">
-                                        <span class="mb-1 md:mb-0 w-[15rem]">{{ $hemograma->nombre }}</span>
-                                        <input type="text" 
-                                            name="resultados[{{ $hemograma->id }}]" 
-                                            value="{{ old('resultados.'.$hemograma->id, $valorPrevio) }}"
-                                            placeholder="Resultado"
-                                            class="border px-2 py-1 rounded w-full md:w-1/2 focus:outline-none focus:ring">
-                                    </div>
-                                @endforeach
-                            </div>
+                @foreach($hemogramasPorCategoria as $categoria => $hemogramas)
+                    <div class="mb-4 border rounded">
+                        <!-- Nombre de la categoría -->
+                        <div class="bg-gray-100 px-3 py-2 font-semibold cursor-pointer hover:bg-gray-200">
+                            {{ $categoria }}
                         </div>
-                    @endforeach
+
+                        <!-- Hemogramas con input de resultado -->
+                        <div class="p-3 space-y-2">
+                            @foreach($hemogramas as $hemograma)
+                                @php
+                                    $valorPrevio = $analisi->hemogramas->firstWhere('id', $hemograma->id)?->pivot->resultado;
+                                @endphp
+
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between border p-2 rounded bg-white">
+                                    <span class="mb-1 md:mb-0 w-[15rem]">{{ $hemograma->nombre }}</span>
+                                    <input type="text" 
+                                        name="resultados[{{ $hemograma->id }}]" 
+                                        value="{{ old('resultados.'.$hemograma->id, $valorPrevio) }}"
+                                        placeholder="Resultado"
+                                        class="border px-2 py-1 rounded w-full md:w-1/2 focus:outline-none focus:ring">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                 @endforeach
             </div>
+
         </div>
     </form>
 </x-app-layout>

@@ -23,7 +23,7 @@
             
         {{-- Page Heading --}}
         @isset($header)
-        <header class="h-16 bg-[#1E3A8A] backdrop-blur-md shadow-md flex items-center justify-between">
+        <header class="h-16  lg:pl-[17rem]  bg-[#1E3A8A] backdrop-blur-md shadow-md flex items-center justify-between">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white font-semibold flex-1 flex items-center justify-between">
                 {{ $header }}
 
@@ -48,9 +48,9 @@
         </main>
 
         {{-- FOOTER --}}
-        <footer class="h-16 lg:pl-64 bg-gray-300 text-white flex items-center justify-center rounded-t-xl shadow-lg">
+        {{-- <footer class="h-16 lg:pl-64 bg-gray-300 text-white flex items-center justify-center rounded-t-xl shadow-lg">
             © 2025 - Todos los derechos reservados
-        </footer>
+        </footer> --}}
 
         @stack('scripts')
     </body>

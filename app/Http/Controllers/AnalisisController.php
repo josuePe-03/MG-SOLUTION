@@ -118,11 +118,20 @@ class AnalisisController extends Controller
         // Cargar relaciones
         $analisis->load(['cliente', 'doctor', 'tipoAnalisis', 'tipoMetodo', 'tipoMuestra', 'hemogramas.categoria']);
 
-        // Generar PDF desde la vista
-        $pdf = Pdf::loadView('analisis.pdf', compact('analisis'));
+        // Generar PDF desde la vista sin márgenes
+        $pdf = Pdf::loadView('analisis.pdf', compact('analisis'))
+                ->setPaper('A4', 'portrait')
+                ->setOptions([
+                    'isHtml5ParserEnabled' => true,
+                    'isRemoteEnabled' => true, // <--- esto es clave
+                    'margin_top' => 0,
+                    'margin_bottom' => 0,
+                    'margin_left' => 0,
+                    'margin_right' => 0,
+                ]);
 
         // Descargar el PDF
-        return $pdf->download('analisis_'.$analisis->id.'.pdf');
+        return $pdf->stream('analisis_'.$analisis->id.'.pdf');
     }
 
 }

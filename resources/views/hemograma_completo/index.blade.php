@@ -16,7 +16,22 @@
     @endif
 
 
-    <div class="bg-white w-fit shadow-lg rounded-lg overflow-hidden">
+    <div class="bg-white w-fit shadow-lg rounded-lg overflow-hidden p-2">
+        <div class="mb-4 flex items-center space-x-2">
+            <form action="{{ route('hemograma_completo.index') }}" method="GET" class="flex items-center space-x-2">
+                <input type="text" name="search" placeholder="Buscar hemograma..." 
+                    value="{{ request('search') }}"
+                    class="border px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-sky-500">
+                <button type="submit" class="bg-sky-600 hover:bg-sky-700 text-white px-3 py-1 rounded">
+                    Buscar
+                </button>
+                <a href="{{ route('hemograma_completo.index') }}" 
+                class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">
+                Limpiar
+                </a>
+            </form>
+        </div>
+
         <table class=" border-collapse">
             <thead  class="bg-sky-700 text-white">
                 <tr>
@@ -53,5 +68,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="mt-4 flex justify-between">
+            {{ $hemogramas->links('pagination::tailwind', ['class' => 'bg-red-500 text-white rounded']) }}
+        </div>
     </div>
 </x-app-layout>

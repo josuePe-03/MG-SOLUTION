@@ -10,9 +10,21 @@ use Illuminate\Http\Request;
 
 class HemogramaCompletoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $hemogramas = HemogramaCompleto::with(['categoria', 'unidad'])->get();
+        $query = HemogramaCompleto::query()->with(['categoria', 'unidad']);
+
+        // FILTRADO
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where('nombre', 'like', "%{$search}%")
+                ->orWhereHas('categoria', fn($q) => $q->where('nombre', 'like', "%{$search}%"))
+                ->orWhereHas('unidad', fn($q) => $q->where('nombre', 'like', "%{$search}%"));
+        }
+
+        // PAGINACIÓN
+        $hemogramas = $query->orderBy('id', 'desc')->paginate(10)->withQueryString();
+
         return view('hemograma_completo.index', compact('hemogramas'));
     }
 

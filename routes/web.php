@@ -33,7 +33,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('perfiles', PerfilController::class)->parameters([
         'perfiles' => 'perfil'
     ]);
-    Route::resource('unidades', UnidadController::class);
+   Route::resource('unidades', UnidadController::class)->parameters([
+        'unidades' => 'unidad'
+    ]);
+
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('clientes', ClienteController::class);
     Route::resource('doctores', DoctorController::class);
