@@ -10,7 +10,12 @@ class ClienteController extends Controller
     // Listar clientes
     public function index()
     {
-        $clientes = Cliente::all();
+        // Después (paginación de 10 por página)
+        $clientes = Cliente::when(request('search'), function($query) {
+        $query->where('nombre', 'like', '%'.request('search').'%');
+    })
+    ->paginate(10); // <- importante
+
         return view('clientes.index', compact('clientes'));
     }
 

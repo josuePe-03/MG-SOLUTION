@@ -15,6 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
+    @livewireStyles
     <body x-data="{ open: false }" class="font-sans antialiased bg-gray-100 h-[100dvh] flex flex-col">
 
         {{-- Sidebar --}}
@@ -43,16 +44,17 @@
         @endisset
 
         {{-- Page Content --}}
-       <main class="h-[calc(100dvh-10rem)] lg:ml-[17rem] flex-1  p-4 bg-gray-300 rounded-xl mx-3 my-4 flex flex-col ">
+       <main class="h-[calc(100dvh-10rem)] lg:ml-[17rem] flex-1  p-4 bg-[#F0F4FF] rounded-xl mx-3 my-4 flex flex-col ">
             {{ $slot }}
         </main>
 
         {{-- FOOTER --}}
-        {{-- <footer class="h-16 lg:pl-64 bg-gray-300 text-white flex items-center justify-center rounded-t-xl shadow-lg">
+        <footer class="h-10 text-sm lg:pl-64 bg-[#1E40AF] text-white flex items-center justify-center rounded-t-xl shadow-lg">
             © 2025 - Todos los derechos reservados
-        </footer> --}}
+        </footer>
 
         @stack('scripts')
+        @livewireScripts
     </body>
 </html>
 @push('scripts')
