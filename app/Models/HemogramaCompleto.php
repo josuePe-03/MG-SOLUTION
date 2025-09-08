@@ -32,4 +32,15 @@ class HemogramaCompleto extends Model
     {
         return $this->belongsToMany(TipoAnalisis::class, 'hemograma_completo_tipo_analisis');
     }
+    public function analisis()
+    {
+        return $this->belongsToMany(
+            \App\Models\Analisis::class,
+            'analisis_hemograma',
+            'idHemograma',
+            'idAnalisis'
+        )->withPivot('resultado')
+        ->withTimestamps();
+    }
+
 }

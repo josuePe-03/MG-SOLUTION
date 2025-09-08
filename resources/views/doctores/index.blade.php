@@ -1,22 +1,28 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-semibold text-gray-800">Doctores</h2>
+        <h2 class="text-2xl font-semibold text-gray-100">Doctores</h2>
     </x-slot>
 
-    <div class="max-w-4xl mx-auto mt-6 bg-white rounded-lg shadow p-6">
-        <a href="{{ route('doctores.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition mb-3 inline-block">Nuevo Doctor</a>
+    <div class="mb-4">
+        <a href="{{ route('doctores.create') }}" 
+        class="bg-sky-600 hover:bg-sky-700 text-white px-4 py-2 rounded shadow">
+        + Nuevo Cliente</a>
+    </div>
 
-        @if(session('success'))
-            <div class="text-green-600 mb-3">{{ session('success') }}</div>
-        @endif
+    @if (session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-        <table class="table-auto w-full border border-gray-300">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border px-4 py-2">ID</th>
-                    <th class="border px-4 py-2">Nombre</th>
-                    <th class="border px-4 py-2">Activo</th>
-                    <th class="border px-4 py-2">Acciones</th>
+    <div class="bg-white w-fit shadow-lg rounded-lg overflow-x-auto">
+        <table class=" border-collapse">
+            <thead  class="bg-sky-700 text-white">
+                <tr class="">
+                    <th class="px-6 py-3 text-left text-sm font-semibold">#</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold">Nombre</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold">Activo</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,4 +44,5 @@
             </tbody>
         </table>
     </div>
+
 </x-app-layout>

@@ -50,4 +50,16 @@ class Analisis extends Model
     {
         return $this->belongsTo(User::class, 'idUsuarioCreacion');
     }
+
+    public function hemogramas()
+    {
+        return $this->belongsToMany(
+            \App\Models\HemogramaCompleto::class,
+            'analisis_hemograma',    // tabla pivot
+            'idAnalisis',            // FK en pivot hacia Analisis
+            'idHemograma'            // FK en pivot hacia HemogramaCompleto
+        )->withPivot('resultado')
+        ->withTimestamps();
+    }
+
 }

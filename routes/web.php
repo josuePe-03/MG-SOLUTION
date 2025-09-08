@@ -43,8 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('tipo_muestra', TipoMuestraController::class);
     Route::resource('categoria_hemograma_completo', CategoriaHemogramaCompletoController::class);
     Route::resource('hemograma_completo', HemogramaCompletoController::class);
+
     Route::resource('analisis', AnalisisController::class);
-    
+    Route::get('/analisis/{analisis}/pdf', [AnalisisController::class, 'generarPdf'])
+        ->name('analisis.pdf');
 });
 
 Route::get('/dashboard', function () {
