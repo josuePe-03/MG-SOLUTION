@@ -14,8 +14,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
-    @livewireStyles
     <body x-data="{ open: false }" class="font-sans antialiased bg-gray-100 h-[100dvh] flex flex-col">
 
         {{-- Sidebar --}}
@@ -53,8 +53,8 @@
             © 2025 - Todos los derechos reservados
         </footer>
 
-        @stack('scripts')
         @livewireScripts
+        @stack('scripts')
     </body>
 </html>
 @push('scripts')
