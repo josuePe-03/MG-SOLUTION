@@ -1,7 +1,7 @@
 <div class="bg-white w-full shadow-lg rounded-lg overflow-hidden p-2">
 
     <div class="mb-4 flex items-center space-x-2">
-        <input type="text" wire:model.debounce.300ms="search" placeholder="Buscar hemograma..." 
+        <input type="text" wire:model.live="search" placeholder="Buscar hemograma..." 
                class="border px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-sky-500 w-full md:w-64">
     </div>
 

@@ -16,7 +16,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @livewireStyles
     </head>
-    <body x-data="{ open: false }" class="font-sans antialiased bg-gray-100 h-[100dvh] flex flex-col">
+    <body x-data="{ open: false }" class="font-sans antialiased bg-gray-50 h-[100dvh] flex flex-col">
 
         {{-- Sidebar --}}
         <x-sidebar />
@@ -24,7 +24,7 @@
             
         {{-- Page Heading --}}
         @isset($header)
-        <header class="h-16  lg:pl-[17rem]  bg-[#1E3A8A] backdrop-blur-md shadow-md flex items-center justify-between">
+        <header class="h-16 lg:hidden  lg:pl-[17rem]  bg-gray-800 backdrop-blur-md shadow-md flex items-center justify-between">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white font-semibold flex-1 flex items-center justify-between">
                 {{ $header }}
 
@@ -44,14 +44,19 @@
         @endisset
 
         {{-- Page Content --}}
-       <main class="h-[calc(100dvh-10rem)] lg:ml-[17rem] flex-1  p-4 bg-[#F0F4FF] rounded-xl mx-3 my-4 flex flex-col ">
+       <main class="h-[calc(100dvh-10rem)] lg:ml-[17rem] flex-1   p-4 rounded-xl mx-3 my-4 flex flex-col ">
             {{ $slot }}
         </main>
 
         {{-- FOOTER --}}
-        <footer class="h-10 text-sm lg:pl-64 bg-[#1E40AF] text-white flex items-center justify-center rounded-t-xl shadow-lg">
-            © 2025 - Todos los derechos reservados
+        <footer class="bg-white lg:ml-[17rem]  rounded-lg shadow-lg m-4">
+            <div class="w-full mx-auto max-w-screen-xl p-4 text-center">
+                <span class="text-sm text-gray-500 ">           
+                    © 2025 - Todos los derechos reservados
+                </span>
+            </div>
         </footer>
+
 
         @livewireScripts
         @stack('scripts')

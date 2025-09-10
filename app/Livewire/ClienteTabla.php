@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\HemogramaCompleto;
+use App\Models\Cliente;
 
-class HemogramaTabla extends Component
+class ClienteTabla extends Component
 {
+
     use WithPagination;
 
     public $search = '';
@@ -22,12 +23,14 @@ class HemogramaTabla extends Component
 
     public function render()
     {
-        $hemogramas = HemogramaCompleto::with(['categoria', 'unidad'])
-            ->where('nombre', 'like', '%'.$this->search.'%')
+        $clientes = Cliente::where('nombre', 'like', '%'.$this->search.'%')
             ->paginate(10);
 
-        return view('livewire.hemograma-tabla', [
-            'hemogramas' => $hemogramas,
+        return view('livewire.cliente-tabla', [
+            'clientes' => $clientes,
         ]);
+
     }
 }
+
+

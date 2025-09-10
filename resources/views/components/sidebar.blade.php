@@ -1,6 +1,6 @@
 {{-- Sidebar --}}
 <aside :class="open ? 'translate-x-0' : '-translate-x-full'"
-        class="fixed inset-y-0 left-0 w-64 bg-[#1E3A8A]  text-white flex flex-col justify-between shadow-lg transform md:translate-x-0 transition-transform duration-300 z-50">
+        class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white flex flex-col justify-between shadow-lg transform md:translate-x-0 transition-transform duration-300 z-50">
 
     <div >
         {{-- Botón cerrar en móvil --}}
