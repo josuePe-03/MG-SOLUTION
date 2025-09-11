@@ -33,48 +33,50 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500">
                     <thead class="text-xs text-gray-800 uppercase bg-gray-200 ">
-                            <tr>
-                                <th scope="col" class="px-4 py-3">#</th>
-                                <th scope="col" class="px-4 py-3">Nombre</th>
-                                <th scope="col" class="px-4 py-3">Edad</th>
-                                <th scope="col" class="px-4 py-3">Sexo</th>
-                                <th scope="col" class="px-4 py-3">
-                                    <span class="sr-only">Acciones</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($clientes as $cliente)
-                            <tr class="border-b ">
-                                <td class="px-4 py-3">{{ $cliente->id }}</td>
-                                <td class="px-4 py-3">{{ $cliente->nombre }}</td>
-                                <td class="px-4 py-3">{{ $cliente->edad }}</td>
-                                <td class="px-4 py-3">{{ $cliente->sexo }}</td>
-                                <td class="px-4 py-3">
-                                    <a href="{{ route('clientes.edit', $cliente) }}" 
-                                    class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium hover:bg-blue-200 transition">
-                                        Editar
-                                    </a>
-                                    <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="inline">
-                                        @csrf @method('DELETE')
-                                        <button type="submit"
-                                            class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium hover:bg-red-200 transition">
-                                            Eliminar
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="5" class="px-6 py-3 text-center text-gray-500">
-                                    No se encontraron clientes.
-                                </td>
-                            </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                        <tr>
+                            <th scope="col" class="px-4 py-3">#</th>
+                            <th scope="col" class="px-4 py-3">Nombre</th>
+                            <th scope="col" class="px-4 py-3">Edad</th>
+                            <th scope="col" class="px-4 py-3">Sexo</th>
+                            <th scope="col" class="px-4 py-3">
+                                <span class="sr-only">Acciones</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($clientes as $cliente)
+                        <tr class="border-b ">
+                            <td class="px-4 py-3">{{ $cliente->id }}</td>
+                            <td class="px-4 py-3">{{ $cliente->nombre }}</td>
+                            <td class="px-4 py-3">{{ $cliente->edad }}</td>
+                            <td class="px-4 py-3">{{ $cliente->sexo }}</td>
+                            <td class="px-4 py-3">
+                                <a href="{{ route('clientes.edit', $cliente) }}" 
+                                class="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium hover:bg-blue-200 transition">
+                                    Editar
+                                </a>
+                                <form action="{{ route('clientes.destroy', $cliente) }}" method="POST" class="inline">
+                                    @csrf @method('DELETE')
+                                    <button type="submit"
+                                        class="inline-flex items-center px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium hover:bg-red-200 transition">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="px-6 py-3 text-center text-gray-500">
+                                No se encontraron clientes.
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+                {{-- PAGINACION --}}
+                <div class="p-4">
+                    {{ $clientes->links() }}
                 </div>
-                {{ $clientes->links() }}
             </div>
         </div>
     </section>
