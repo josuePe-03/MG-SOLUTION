@@ -4,9 +4,9 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Cliente;
+use App\Models\Unidad;
 
-class ClienteTabla extends Component
+class UnidadTabla extends Component
 {
 
     use WithPagination;
@@ -23,13 +23,10 @@ class ClienteTabla extends Component
 
     public function render()
     {
-        $clientes = Cliente::where('nombre', 'like', '%'.$this->search.'%')
+        $unidades = Unidad::where('nombre', 'like', '%'.$this->search.'%')
             ->paginate(10);
-
-        return view('livewire.cliente-tabla', [
-            'clientes' => $clientes,
+        return view('livewire.unidad-tabla',[
+            'unidades' => $unidades,
         ]);
     }
 }
-
-

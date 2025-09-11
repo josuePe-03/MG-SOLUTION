@@ -4,11 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Cliente;
+use App\Models\TipoMetodo;
 
-class ClienteTabla extends Component
+class TipoMetodoTabla extends Component
 {
-
     use WithPagination;
 
     public $search = '';
@@ -23,13 +22,11 @@ class ClienteTabla extends Component
 
     public function render()
     {
-        $clientes = Cliente::where('nombre', 'like', '%'.$this->search.'%')
+        $metodos = TipoMetodo::where('nombre', 'like', '%'.$this->search.'%')
             ->paginate(10);
 
-        return view('livewire.cliente-tabla', [
-            'clientes' => $clientes,
+        return view('livewire.tipo-metodo-tabla',[
+            'metodos' => $metodos,
         ]);
     }
 }
-
-

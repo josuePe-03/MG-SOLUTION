@@ -4,11 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Cliente;
+use App\Models\Analisis;
 
-class ClienteTabla extends Component
+class AnalisisTabla extends Component
 {
-
     use WithPagination;
 
     public $search = '';
@@ -23,13 +22,13 @@ class ClienteTabla extends Component
 
     public function render()
     {
-        $clientes = Cliente::where('nombre', 'like', '%'.$this->search.'%')
-            ->paginate(10);
+        $analisis = Analisis::whereHas('cliente', function ($query) {
+            $query->where('nombre', 'like', '%'.$this->search.'%');
+        })
+        ->paginate(10);
 
-        return view('livewire.cliente-tabla', [
-            'clientes' => $clientes,
+        return view('livewire.analisis-tabla', [
+            'analisis' => $analisis,
         ]);
     }
 }
-
-

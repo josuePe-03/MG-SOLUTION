@@ -4,11 +4,10 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Cliente;
+use App\Models\Doctor;
 
-class ClienteTabla extends Component
+class DoctorTabla extends Component
 {
-
     use WithPagination;
 
     public $search = '';
@@ -18,18 +17,15 @@ class ClienteTabla extends Component
 
     public function updatingSearch()
     {
-        $this->resetPage(); // Resetea la paginación cuando cambias el texto de búsqueda
+        $this->resetPage(); 
     }
 
     public function render()
     {
-        $clientes = Cliente::where('nombre', 'like', '%'.$this->search.'%')
+        $doctores = Doctor::where('nombre', 'like', '%'.$this->search.'%')
             ->paginate(10);
-
-        return view('livewire.cliente-tabla', [
-            'clientes' => $clientes,
+        return view('livewire.doctor-tabla',[
+            'doctores' => $doctores,
         ]);
     }
 }
-
-

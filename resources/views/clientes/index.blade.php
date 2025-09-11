@@ -10,7 +10,4 @@
     @endif
 
     @livewire('cliente-tabla')
-
-
-
 </x-app-layout>
