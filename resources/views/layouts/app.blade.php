@@ -11,6 +11,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -44,7 +45,7 @@
         @endisset
 
         {{-- Page Content --}}
-       <main class="h-[calc(100dvh-10rem)] lg:ml-[17rem] flex-1   p-4 rounded-xl mx-3 my-4 flex flex-col ">
+       <main class="lg:ml-[17rem] flex-1   p-4 rounded-xl mx-3 my-4 flex flex-col ">
             {{ $slot }}
         </main>
 
