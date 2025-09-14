@@ -113,7 +113,7 @@
                                 @endphp
 
                                 <div class="flex flex-col md:flex-row md:items-center md:justify-between border p-2 rounded bg-white">
-                                    <span class="mb-1 md:mb-0 w-[15rem] mr-4">{{ $hemograma->nombre }}</span>
+                                    <span class="mb-1 md:mb-0 w-[15rem] mr-4.">{{ $hemograma->nombre }}</span>
                                     <input type="text" 
                                            name="resultados[{{ $hemograma->id }}]" 
                                            value="{{ old('resultados.'.$hemograma->id, $valorPrevio) }}"
