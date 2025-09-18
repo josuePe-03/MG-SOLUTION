@@ -1,32 +1,32 @@
 version: "3.8"
 
 services:
-  app-la-piedad:
+  app_mg_solucion:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app-la-piedad
+    container_name: app_mg_solucion
     ports:
     - "8080:80"
 
-  bd_mysql_la_piedad:
+  bd_mysql_mg_solution:
     image: mysql:8.0
-    container_name: bd_mysql_la_piedad
+    container_name: bd_mysql_mg_solution
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: bd_mysql_la_piedad
+      MYSQL_DATABASE: bd_mysql_mg_solution
     ports:
       - '3306:3306'
     volumes:
-      - vol__la_piedad:/var/lib/mysql  
+      - vol_mg_solution:/var/lib/mysql  
     networks:
-      - la_piedad_net
-      - la_piedad_proxy
+      - mg_solution_net
+      - mg_solution_proxy
 
 networks:
-  la_piedad_net:
-  la_piedad_proxy:
+  mg_solution_net:
+  mg_solution_proxy:
     external: true
 
 volumes:
-  vol__la_piedad:
+  vol_mg_solution:

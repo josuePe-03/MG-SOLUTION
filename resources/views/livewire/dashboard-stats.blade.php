@@ -5,7 +5,7 @@
             <div class="bg-white shadow-md rounded-2xl p-6 flex items-center justify-between">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-700">Clientes</h3>
-                    <p class="text-3xl font-bold text-blue-600">{{ $clientes }}</p>
+                    <p class="text-3xl font-bold text-blue-600">0</p>
                 </div>
                 <div class="bg-blue-100 text-blue-600 p-3 rounded-full">
                     <i class="fas fa-users text-2xl"></i>
@@ -15,7 +15,7 @@
             <div class="bg-white shadow-md rounded-2xl p-6 flex items-center justify-between">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-700">Doctores</h3>
-                    <p class="text-3xl font-bold text-green-600">{{ $doctores }}</p>
+                    <p class="text-3xl font-bold text-green-600">0</p>
                 </div>
                 <div class="bg-green-100 text-green-600 p-3 rounded-full">
                     <i class="fas fa-user-md text-2xl"></i>
@@ -25,7 +25,7 @@
             <div class="bg-white shadow-md rounded-2xl p-6 flex items-center justify-between">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-700">Análisis</h3>
-                    <p class="text-3xl font-bold text-purple-600">{{ $analisis }}</p>
+                    <p class="text-3xl font-bold text-purple-600">0</p>
                 </div>
                 <div class="bg-purple-100 text-purple-600 p-3 rounded-full">
                     <i class="fas fa-vials text-2xl"></i>
@@ -36,7 +36,7 @@
             <div class="bg-white shadow-md rounded-2xl p-6 flex items-center justify-between">
                 <div>
                     <h3 class="text-lg font-semibold text-gray-700">Tipos de Análisis</h3>
-                    <p class="text-3xl font-bold text-orange-600">{{ $tiposAnalisis }}</p>
+                    <p class="text-3xl font-bold text-orange-600">0</p>
                 </div>
                 <div class="bg-orange-100 text-orange-600 p-3 rounded-full">
                     <i class="fas fa-flask text-2xl"></i>
@@ -55,7 +55,7 @@
                             labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Agos','Sep','Oct'],
                             datasets: [{
                                 label: 'Clientes',
-                                data: {{ json_encode($clientesPorMes) }},
+                                data: 0,
                                 borderColor: '#2563eb',
                                 backgroundColor: 'rgba(37, 99, 235, 0.3)',
                                 fill: true,
@@ -74,10 +74,10 @@
                     new Chart($refs.analisisChart, {
                         type: 'doughnut',
                         data: {
-                            labels: {{ json_encode(array_keys($analisisCategorias)) }},
+                            labels: 0,
                             datasets: [{
                                 label: 'Análisis',
-                                data: {{ json_encode(array_values($analisisCategorias)) }},
+                                data: 0,
                                 backgroundColor: [
                                     '#8b5cf6',
                                     '#10b981',

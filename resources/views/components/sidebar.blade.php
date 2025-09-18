@@ -12,49 +12,38 @@
             <h1 class="text-2xl font-bold mb-8 tracking-wide">La Piedad</h1>
             <nav class="space-y-2 text-sm">
                 @auth
-                @if (auth()->user()->tienePerfil('Administrador'))
+                     @if (auth()->user()->tienePerfil('Administrador'))
                         <a href="/dashboard" class="{{ request()->is('dashboard*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Dashboard</a>
-                        <a href="/clientes" class="{{ request()->is('clientes*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Clientes</a>
-                        <a href="/doctores" class="{{ request()->is('doctores*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Doctores</a>
                     @endif
 
-                    {{-- Dropdown Analisis --}}
-                    <div x-data="{ analisisOpen: {{ request()->is('analisis*') 
-                        || request()->is('hemograma_completo*') 
-                        || request()->is('tipo_analisis*') 
-                        || request()->is('tipo_metodo*') 
-                        || request()->is('tipo_muestra*') 
-                        || request()->is('unidades*') 
-                        || request()->is('categoria_hemograma_completo*') ? 'true' : 'false' }} }">
+                    {{-- Dropdown Productos --}}
+                    <div x-data="{ productoOpen: {{ request()->is('productos*') 
+                        || request()->is('productos*') 
+                        || request()->is('producto-marcas*') 
+                        || request()->is('producto-categorias*') 
+                        ? 'true' : 'false' }} }">
 
-                        <button @click="analisisOpen = !analisisOpen" 
+                        <button @click="productoOpen = !productoOpen" 
                             class="w-full text-left px-3 py-2 rounded hover:bg-[#0EA5E9] flex justify-between items-center 
-                            {{ request()->is('analisis*') 
-                            || request()->is('hemograma_c   ompleto*') 
-                            || request()->is('tipo_analisis*') 
-                            || request()->is('tipo_metodo*') 
-                            || request()->is('tipo_muestra*') 
-                            || request()->is('unidades*') 
-                            || request()->is('categoria_hemograma_completo*') ? 'bg-[#0EA5E9]' : '' }}">
+                            {{ request()->is('productos*') 
+                            || request()->is('producto-marcas*') 
+                            || request()->is('producto-categorias*') 
+                             ? 'bg-[#0EA5E9]' : '' }}">
                             
-                            <span>Analisis</span>
-                            <svg :class="{ 'rotate-180': analisisOpen }" 
+                            <span>Productos</span>
+                            <svg :class="{ 'rotate-180': productoOpen }" 
                                 class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
 
-                        <div x-show="analisisOpen" x-transition class="mt-1 space-y-1 pl-4">
+                        <div x-show="productoOpen" x-transition class="mt-1 space-y-1 pl-4">
                             @if (auth()->user()->tienePerfil('Capturista') || auth()->user()->tienePerfil('Administrador'))
-                                <a href="/analisis" class="{{ request()->is('analisis*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Analisis</a>
+                                <a href="/productos" class="{{ request()->is('productos*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Productos</a>
                             @endif
                             @if (auth()->user()->tienePerfil('Administrador'))
-                                <a href="/hemograma_completo" class="{{ request()->is('hemograma_completo*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Hemograma Completo</a>
-                                <a href="/tipo_analisis" class="{{ request()->is('tipo_analisis*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Analisis</a>
-                                <a href="/tipo_metodo" class="{{ request()->is('tipo_metodo*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Metodo</a>
-                                <a href="/tipo_muestra" class="{{ request()->is('tipo_muestra*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Muestra</a>
-                                <a href="/unidades" class="{{ request()->is('unidades*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Unidades</a>
-                                <a href="/categoria_hemograma_completo" class="{{ request()->is('categoria_hemograma_completo*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Categoria de Hemograma Completo</a>
+                                <a href="/producto-marcas" class="{{ request()->is('producto-marcas*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Analisis</a>
+                                <a href="/producto-categorias" class="{{ request()->is('producto-categorias*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Metodo</a>
                             @endif
                         </div>
                     </div>
