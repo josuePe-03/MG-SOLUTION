@@ -9,42 +9,47 @@ class CategoriaProductoController extends Controller
 {
     public function index()
     {
-        return response()->json(CategoriaProducto::all());
+        $categorias = CategoriaProducto::all();
+        return view('categorias-productos.index', compact('categorias'));
+    }
+
+    public function create()
+    {
+        return view('categorias-productos.create');
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'nombre' => 'required|unique:categorias_productos,nombre',
             'descripcion' => 'nullable|string',
         ]);
 
-        $categoria = CategoriaProducto::create($data);
+        CategoriaProducto::create($request->only('nombre', 'descripcion'));
 
-        return response()->json($categoria, 201);
+        return redirect()->route('categorias-productos.index')->with('success', 'Categoria creada.');
     }
 
-    public function show(CategoriaProducto $categoriaProducto)
+    public function edit(CategoriaProducto $categoriaProducto)
     {
-        return response()->json($categoriaProducto);
+        return view('categorias-productos.edit', compact('categoriaProducto'));
     }
 
     public function update(Request $request, CategoriaProducto $categoriaProducto)
     {
-        $data = $request->validate([
+        $request->validate([
             'nombre' => 'required|unique:categorias_productos,nombre,' . $categoriaProducto->id,
             'descripcion' => 'nullable|string',
         ]);
 
-        $categoriaProducto->update($data);
-
-        return response()->json($categoriaProducto);
+        $categoriaProducto->update($request->only('nombre', 'descripcion'));
+        
+        return redirect()->route('categorias-productos.index')->with('success', 'Categoria actualizado.');
     }
 
     public function destroy(CategoriaProducto $categoriaProducto)
     {
         $categoriaProducto->delete();
-
-        return response()->json(null, 204);
+        return redirect()->route('categorias-productos.index')->with('success', 'Categoria eliminada.');
     }
 }

@@ -19,15 +19,15 @@
                     {{-- Dropdown Productos --}}
                     <div x-data="{ productoOpen: {{ request()->is('productos*') 
                         || request()->is('productos*') 
-                        || request()->is('producto-marcas*') 
-                        || request()->is('producto-categorias*') 
+                        || request()->is('marcas-productos*') 
+                        || request()->is('categorias-productos*') 
                         ? 'true' : 'false' }} }">
 
                         <button @click="productoOpen = !productoOpen" 
                             class="w-full text-left px-3 py-2 rounded hover:bg-[#0EA5E9] flex justify-between items-center 
                             {{ request()->is('productos*') 
-                            || request()->is('producto-marcas*') 
-                            || request()->is('producto-categorias*') 
+                            || request()->is('marcas-productos*') 
+                            || request()->is('categorias-productos*') 
                              ? 'bg-[#0EA5E9]' : '' }}">
                             
                             <span>Productos</span>
@@ -42,8 +42,8 @@
                                 <a href="/productos" class="{{ request()->is('productos*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Productos</a>
                             @endif
                             @if (auth()->user()->tienePerfil('Administrador'))
-                                <a href="/producto-marcas" class="{{ request()->is('producto-marcas*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Analisis</a>
-                                <a href="/producto-categorias" class="{{ request()->is('producto-categorias*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Tipo De Metodo</a>
+                                <a href="/marcas-productos" class="{{ request()->is('marcas-productos*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Marca Producto</a>
+                                <a href="/categorias-productos" class="{{ request()->is('categorias-productos*') ? 'bg-[#0EA5E9]' : '' }} block px-3 py-2 rounded hover:bg-[#0EA5E9]">Categoria Producto</a>
                             @endif
                         </div>
                     </div>

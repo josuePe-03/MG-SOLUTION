@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\MarcaProductoController;
+use App\Http\Controllers\CategoriaProductoController;
+use App\Http\Controllers\ProductoController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +18,15 @@ Route::middleware(['auth'])->group(function () {
         'perfiles' => 'perfil'
     ]);
     Route::resource('usuarios', UsuarioController::class);
+    Route::resource('marcas-productos', MarcaProductoController::class)->parameters([
+        'marcas-productos' => 'marcaProducto'
+    ]);
+    Route::resource('categorias-productos', CategoriaProductoController::class)->parameters([
+        'categorias-productos' => 'categoriaProducto'
+    ]);
+    Route::resource('productos', ProductoController::class)->parameters([
+        'productos' => 'producto'
+    ]);
 });
 
 Route::get('/dashboard', function () {

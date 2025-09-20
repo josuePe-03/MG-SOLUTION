@@ -14,9 +14,9 @@ class Producto extends Model
         'descripcion',
         'precio',
         'stock',
-        'ruta_imagen',
+        'path',
         'categoria_producto_id',
-        'marca_producto_id'
+        'marca_producto_id',
     ];
 
     public function categoria()

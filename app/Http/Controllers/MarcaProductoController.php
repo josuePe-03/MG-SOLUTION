@@ -9,42 +9,47 @@ class MarcaProductoController extends Controller
 {
     public function index()
     {
-        return response()->json(MarcaProducto::all());
+        $marcas = MarcaProducto::all();
+        return view('marcas-productos.index', compact('marcas'));
+    }
+
+    public function create()
+    {
+        return view('marcas-productos.create');
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'nombre' => 'required|unique:marcas_productos,nombre',
             'descripcion' => 'nullable|string',
         ]);
 
-        $marca = MarcaProducto::create($data);
+        MarcaProducto::create($request->only('nombre', 'descripcion'));
 
-        return response()->json($marca, 201);
+        return redirect()->route('marcas-productos.index')->with('success', 'Marca creada.');
     }
 
-    public function show(MarcaProducto $marcaProducto)
+    public function edit(MarcaProducto $marcaProducto)
     {
-        return response()->json($marcaProducto);
+        return view('marcas-productos.edit', compact('marcaProducto'));
     }
 
     public function update(Request $request, MarcaProducto $marcaProducto)
     {
-        $data = $request->validate([
+        $request->validate([
             'nombre' => 'required|unique:marcas_productos,nombre,' . $marcaProducto->id,
             'descripcion' => 'nullable|string',
         ]);
 
-        $marcaProducto->update($data);
-
-        return response()->json($marcaProducto);
+        $marcaProducto->update($request->only('nombre', 'descripcion'));
+        
+        return redirect()->route('marcas-productos.index')->with('success', 'Marca actualizado.');
     }
 
     public function destroy(MarcaProducto $marcaProducto)
     {
         $marcaProducto->delete();
-
-        return response()->json(null, 204);
+        return redirect()->route('marcas-productos.index')->with('success', 'Marca eliminada.');
     }
 }

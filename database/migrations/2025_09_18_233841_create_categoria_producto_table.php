@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('categorias_producto', function (Blueprint $table) {
+        Schema::create('categorias_productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique(); // Ej: Pantallas, Baterías
             $table->text('descripcion')->nullable();

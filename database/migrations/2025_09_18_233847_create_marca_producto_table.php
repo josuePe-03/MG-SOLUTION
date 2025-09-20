@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('marcas_producto', function (Blueprint $table) {
+        Schema::create('marcas_productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique(); // Ej: Samsung, Apple, LG
             $table->text('descripcion')->nullable();

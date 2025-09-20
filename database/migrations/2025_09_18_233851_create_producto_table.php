@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('producto', function (Blueprint $table) {
+        Schema::create('productos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
             $table->text('descripcion')->nullable();
@@ -18,12 +18,12 @@ return new class extends Migration
 
             // Relaciones
             $table->foreignId('categoria_producto_id')
-                  ->constrained('categorias_producto')
+                  ->constrained('categorias_productos')
                   ->onDelete('cascade'); // si borras la categoría, se eliminan producto
 
             $table->foreignId('marca_producto_id')
                   ->nullable()
-                  ->constrained('marcas_producto')
+                  ->constrained('marcas_productos')
                   ->onDelete('set null'); // si borras la marca, el producto queda sin marca
 
             $table->timestamps();
@@ -32,6 +32,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('producto');
+        Schema::dropIfExists('productos');
     }
 };
