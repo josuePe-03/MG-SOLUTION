@@ -115,7 +115,7 @@
     </footer>
 
     <!-- Botón flotante WhatsApp -->
-    <a href="https://wa.me/2841022581?text=Hola,%20quiero%20más%20información%20sobre%20sus%20productos" 
+    <a href="https://wa.me/522841022581?text=Hola,%20quiero%20más%20información%20sobre%20sus%20productos" 
     target="_blank"
     class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center transition transform hover:scale-110">
         <svg xmlns="http://www.w3.org/2000/svg" 

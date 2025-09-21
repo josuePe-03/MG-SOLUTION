@@ -79,7 +79,7 @@ class Carrito extends Component
         $total = collect($this->carrito)->sum(fn($i) => $i['precio'] * $i['cantidad']);
         $mensaje .= "Total: $" . number_format($total, 2) . " MXN";
 
-        $numeroWhatsapp = '5211234567890'; // tu número
+        $numeroWhatsapp = '522841022581'; // tu número
         $url = "https://wa.me/{$numeroWhatsapp}?text=" . urlencode($mensaje);
 
         return redirect()->to($url);
