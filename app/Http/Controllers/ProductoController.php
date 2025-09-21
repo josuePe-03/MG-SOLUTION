@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+
 use App\Models\Producto;
 use App\Models\CategoriaProducto;
 use App\Models\MarcaProducto;
-use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
@@ -87,12 +89,18 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente');
     }
 
-    /**
-     * Eliminar producto
-     */
+
     public function destroy(Producto $producto)
     {
+        // Verificar y borrar la imagen en el disco 'public'
+        if ($producto->path && Storage::disk('public')->exists($producto->path)) {
+            Storage::disk('public')->delete($producto->path);
+        }
+
+        // Eliminar el producto
         $producto->delete();
-        return redirect()->route('productos.index')->with('success', 'Producto eliminado correctamente');
+
+        return redirect()->route('productos.index')
+            ->with('success', 'Producto e imagen eliminados correctamente.');
     }
 }

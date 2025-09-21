@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  app_mg_solucion:
+  app_mg_solution:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app_mg_solucion
+    container_name: app_mg_solucton
     ports:
     - "8080:80"
 

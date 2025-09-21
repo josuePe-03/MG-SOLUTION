@@ -1,7 +1,6 @@
 {{-- Sidebar --}}
 <aside :class="open ? 'translate-x-0' : '-translate-x-full'"
         class="fixed inset-y-0 left-0 w-64 bg-gray-800 text-white flex flex-col justify-between shadow-lg transform md:translate-x-0 transition-transform duration-300 z-50">
-
     <div >
         {{-- Botón cerrar en móvil --}}
         <div class="flex justify-end md:hidden p-4">
@@ -9,7 +8,7 @@
         </div>
         {{-- CONTENIDO --}}
         <div class="px-6 py-6">
-            <h1 class="text-2xl font-bold mb-8 tracking-wide">La Piedad</h1>
+            <h1 class="text-2xl font-bold mb-8 tracking-wide">MG Solution</h1>
             <nav class="space-y-2 text-sm">
                 @auth
                      @if (auth()->user()->tienePerfil('Administrador'))
@@ -82,6 +81,6 @@
     </div>
 
     <div class="px-6 py-4 text-sm text-[#93c5fd]">
-        © {{ date('Y') }} La Piedad
+        © {{ date('Y') }} MG Solution
     </div>
 </aside>
